@@ -110,6 +110,43 @@ Systems Administration
                 │ Metadata & Access Control    │
                 └──────────────────────────────┘
 				
+📊 🔁 FAILOVER FLOW DIAGRAM
+        ┌────────────────────────────┐
+        │        Client Request      │
+        └─────────────┬──────────────┘
+                      │
+                      ▼
+        ┌────────────────────────────┐
+        │ Load Balancer / DNS        │
+        └─────────────┬──────────────┘
+                      │
+                      ▼
+        ┌────────────────────────────┐
+        │ Primary Node (Active)      │
+        │ EDMS Running               │
+        └─────────────┬──────────────┘
+                      │
+          ┌───────────▼───────────┐
+          │ Health Check Fails ❌ │
+          └───────────┬───────────┘
+                      │
+                      ▼
+        ┌────────────────────────────┐
+        │ Failover Triggered         │
+        │ (Cluster Service)          │
+        └─────────────┬──────────────┘
+                      │
+                      ▼
+        ┌────────────────────────────┐
+        │ Secondary Node Promoted    │
+        │ Becomes Active ✅          │
+        └─────────────┬──────────────┘
+                      │
+                      ▼
+        ┌────────────────────────────┐
+        │ Traffic Redirected         │
+        │ Service Restored           │
+        └────────────────────────────┘
 
 ***🔄 🔁 ARCHITECTURE FLOW (HOW IT WORKS)
 ***🧑‍💻 1. User Request
