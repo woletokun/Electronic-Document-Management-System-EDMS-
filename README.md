@@ -111,6 +111,7 @@ Systems Administration
                 └──────────────────────────────┘
 				
 📊 🔁 FAILOVER FLOW DIAGRAM
+
         ┌────────────────────────────┐
         │        Client Request      │
         └─────────────┬──────────────┘
